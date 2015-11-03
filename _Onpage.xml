@@ -28,6 +28,21 @@
       <Regex Expr="(\bUA-\d{4,10}-\d{1,4}\b)" IgnoreCase="true" DefaultValue=""/>
     </Parse>
   </RestConnector>
+  
+  <RestConnector Id="GoogleTagManagerId" Title="GoogleTagManagerId" AvailableInSpider="true">
+    <Parameters>
+      <Text Id="Url" Title="Url" Required="true"/>
+    </Parameters>
+    <Fetch Url="@(Utils.UrlProperty(Model.Url).Absolute)">
+      <HttpSettings>
+        <IntervalBetweenRequests RandomFrom="0" RandomTo="0" IfSame="Host"/>
+      </HttpSettings>
+    </Fetch>
+    <Parse>
+      <Regex Expr="(\bGTM-.{4,10}\d{1,4}\b)" IgnoreCase="true" DefaultValue=""/>
+    </Parse>
+  </RestConnector>
+  
 
   <RestConnector Id="GoogleAdSenseId" Title="GoogleAdSenseId" AvailableInSpider="true">
     <Parameters>
